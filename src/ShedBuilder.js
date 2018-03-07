@@ -186,9 +186,6 @@ class ShedBuilder extends Component {
           }
         }
       };
-    }, () => {
-      console.log('quantity change',floorId, quantity)
-
     });
   }
 
@@ -207,13 +204,14 @@ class ShedBuilder extends Component {
           }
         }
       };
-    }, () => {
-      console.log('quantity change accessory',accessoryId, quantity)
-
     });
   }
 
   async sendShed() {
+    if(this.state.selectedShed === null){
+      return;
+    }
+
     try {
       let myHeaders = new Headers();
       myHeaders.append("Access-Control-Allow-Origin", "*");
@@ -298,6 +296,7 @@ class ShedBuilder extends Component {
           Garden Master sheds come in a range of convenient pre-made sizes or can be <br/>
           customised to almost any size you need. Please start by selecting a size to suit you.
         </div>
+        <div>
         <div style={shedsStyle}>
           {sheds}
         </div>
@@ -314,6 +313,7 @@ class ShedBuilder extends Component {
           <div style={submitButton} onClick={() => this.sendShed()}>
             SUBMIT
           </div>
+        </div>
         </div>
       </div>
     );
