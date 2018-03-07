@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import { red, green } from './colours';
+import { red, green, grey } from './colours';
 import indicator from './indicator.svg';
 
 class Shed extends Component {
-  constructor(props) {
-    super(props);
-
-  }
-
   render() {
     const shedStyle = {
       display: 'flex',
@@ -28,12 +23,17 @@ class Shed extends Component {
       backgroundColor: `${this.props.isSelected ? green : red}`
     };
 
+    const shedInfoStyle = {
+      color: grey,
+      fontSize: '12px'
+    };
+
     return (
       <div style={shedStyle}>
         <div>
           { this.props.isSelected ?
             <div style={indicatorStyle}>
-              <img src={indicator}/>
+              <img src={indicator} alt={'selected shed indicator'}/>
             </div>
             : null
           }
@@ -41,10 +41,10 @@ class Shed extends Component {
         <div>
           <img src={process.env.PUBLIC_URL + '/images/' + this.props.shed.id + '.png '} alt={this.props.shed.id}/>
         </div>
-        <div>
+        <div style={shedInfoStyle}>
           {this.props.shed.id}
         </div>
-        <div>
+        <div style={shedInfoStyle}>
           {this.props.shed.width} (w) x {this.props.shed.depth} (d) x {this.props.shed.height} (h)
         </div>
         <div style={selectButtonStyle} onClick={() => this.props.onSelect(this.props.shed.id)}>

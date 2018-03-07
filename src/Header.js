@@ -28,22 +28,45 @@ class Header extends Component {
     };
 
     const selected = {
-      borderBottomStyle: 'solid',
-      borderBottomColor: red,
-      borderBottomWidth: '6px',
+      marginBottom: '-10px',
       color: green,
       fontWeight: 'bold',
     };
 
+    const arrowContainer = {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    };
+
+    const arrow = {
+      width: 0,
+      height: 0,
+      borderLeft: '5px solid transparent',
+      borderRight: '5px solid transparent',
+      borderBottom: `5px solid ${red}`,
+    };
+
+    const redSquare = {
+      backgroundColor: red,
+      height: '5px',
+    };
+
     return (
       <div style={container}>
-        <img src={gmShedLogo}/>
+        <img src={gmShedLogo} alt={'logo'}/>
         <div style={navItem}> About</div>
         <div style={navItem}> Shed Range</div>
         <div style={navItem}> Store Locator</div>
-        <div style={{...navItem, ...selected}}> Shed Builder</div>
+        <div>
+          <div style={{...navItem,...selected}}> Shed Builder</div>
+          <div style={arrowContainer}>
+            <div style={arrow}/>
+          </div>
+          <div style={redSquare}/>
+        </div>
         <div style={{...navItem, ...quickQuote}}> Quick Quote </div>
-        <img src={searchIcon}/>
+        <img src={searchIcon} alt={'search icon'}/>
       </div>
     );
   }
